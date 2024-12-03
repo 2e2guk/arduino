@@ -193,7 +193,7 @@ void alertGuardian() {
 
 void alert119() {
   String message = "ALERT_119\n";
-  message += "119 긴급 출동 바랍니다!\n";
+  message += "119 긴급 출동 바랍니다!\n"
   message += "심박수:" + String(currentHeartRate) + " BPM\n";
   message += "체온:" + String(currentBodyTemp) + " °C\n";
   message += "환자 위치: (위도),(경도)\n";
@@ -207,6 +207,9 @@ void sendGuardianAlertAfter119() {
   String message = guardianName + "님, 119에 긴급 신고가 접수되었습니다.\n";
   message += "접수 센터: 서울특별시 강남구 119 안전센터\n";
   message += "센터 위치: 서울특별시 강남구 테헤란로 123\n";
+  message += "심박수:" + String(currentHeartRate) + " BPM\n";
+  message += "체온:" + String(currentBodyTemp) + " °C\n";
+  message += "환자 위치: (위도),(경도)\n";
   BTSerial.println("AFTER_119\n" + message);
   Serial.println("보호자에게 119 신고 정보를 보냈습니다.");
 }
