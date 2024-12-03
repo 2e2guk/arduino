@@ -186,13 +186,14 @@ void alertGuardian() {
   String message = "ALERT_GUARDIAN\n";
   message += "심박수:" + String(currentHeartRate) + " BPM\n";
   message += "체온:" + String(currentBodyTemp) + " °C\n";
-  message += "환자 위치: (위도),(경도)n";
+  message += "환자 위치: (위도),(경도)\n";
   BTSerial.println(message);
   Serial.println("보호자에게 알림을 보냈습니다.");
 }
 
 void alert119() {
   String message = "ALERT_119\n";
+  message += "119 긴급 출동 바랍니다!\n"
   message += "심박수:" + String(currentHeartRate) + " BPM\n";
   message += "체온:" + String(currentBodyTemp) + " °C\n";
   message += "환자 위치: (위도),(경도)\n";
