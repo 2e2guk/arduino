@@ -129,7 +129,7 @@ void initializeTemperatureSensor() {
   // 체온 센서 초기화
   if (mlx.begin()) {
     Serial.println("체온 센서 초기화 성공.");
-    Serial.println("--------------------체온, 심박수 데이터 수집을 시작합니다.-------------------")
+    Serial.println("--------------------체온, 심박수 데이터 수집을 시작합니다.-------------------");
   } else {
     Serial.println("체온 센서 초기화 실패.");
   }
@@ -186,7 +186,7 @@ void alertGuardian() {
   String message = "ALERT_GUARDIAN\n";
   message += "심박수:" + String(currentHeartRate) + " BPM\n";
   message += "체온:" + String(currentBodyTemp) + " °C\n";
-  message += "환자 위치:" + "(위도),(경도)n";
+  message += "환자 위치: (위도),(경도)n";
   BTSerial.println(message);
   Serial.println("보호자에게 알림을 보냈습니다.");
 }
@@ -195,7 +195,7 @@ void alert119() {
   String message = "ALERT_119\n";
   message += "심박수:" + String(currentHeartRate) + " BPM\n";
   message += "체온:" + String(currentBodyTemp) + " °C\n";
-  message += "환자 위치:" ="(위도),(경도)\n";
+  message += "환자 위치: (위도),(경도)\n";
   message += "보호자명:" + guardianName + "\n";
   message += "보호자연락처:" + guardianPhoneNumber + "\n";
   BTSerial.println(message);
