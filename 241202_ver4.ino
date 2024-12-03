@@ -42,7 +42,7 @@ String guardianName = "이강욱";
 String guardianPhoneNumber = "01062842718";
 
 // 센서 읽기 값을 저장할 변수
-float currentHeartRate = 0.0;
+int currentHeartRate = 0;
 float currentBodyTemp = 0.0;
 float latitude = 0.0;
 float longitude = 0.0;
@@ -146,17 +146,13 @@ void initializeTemperatureSensor() {
     Serial.println("체온 센서 초기화 실패.");
   }
 }
-float readHeartRateSensorData() {
-  // 센서로부터 심박수 읽기
-  if (pulseSensor.sawNewSample()) {
-    float beatsPerMinute = pulseSensor.getBeatsPerMinute();
+int readHeartRateSensorData() {
+  int beatsPerMinute = pulseSensor.getBeatsPerMinute();
     if (pulseSensor.sawStartOfBeat()) {
       Serial.print("심박수: ");
       Serial.println(beatsPerMinute);
     }
-    return beatsPerMinute; // 심박수 반환
-  }
-  return currentHeartRate; // 새 샘플이 없을 경우 이전 값 유지
+    return beatsPerMinute;
 }
 
 float getBodyTempFromSensor() {
