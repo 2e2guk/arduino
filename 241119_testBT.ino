@@ -12,7 +12,19 @@ void setup() {
 }
 
 void loop() {
-  BTSerial.println("Test Message from Arduino!"); // HC-06으로 메시지 전송
-  Serial.println("Test Message sent to Bluetooth"); // 시리얼 모니터로도 출력
-  delay(1000); // 1초 간격으로 메시지 전송
+  // 시리얼 모니터에서 입력받은 데이터를 블루투스로 전송
+  if (Serial.available()) {
+    char c = Serial.read();
+    BTSerial.write(c);
+  }
+
+  // 블루투스에서 받은 데이터를 시리얼 모니터로 출력
+  if (BTSerial.available()) {
+    char c = BTSerial.read();
+    Serial.write(c);
+  }
+
+  // 블루투스로 자동 메시지 전송
+  BTSerial.println("Test Message from Arduino!");
+  delay(1000);
 }
