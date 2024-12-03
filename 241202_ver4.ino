@@ -38,8 +38,8 @@ int high_danger_heartrate_high = 120;// H: 매우 위험한 높은 심박수
 float threshold = 0.7; // 알림을 위한 임계값 (필요에 따라 조정)
 
 // 보호자 정보
-String guardianName = "홍길동";
-String guardianPhoneNumber = "01012345678";
+String guardianName = "이강욱";
+String guardianPhoneNumber = "01062842718";
 
 // 센서 읽기 값을 저장할 변수
 float currentHeartRate = 0.0;
@@ -86,6 +86,7 @@ void loop() {
   // 5초마다 체온 읽기
   if (currentMillis % 5000 < 50) {
     currentBodyTemp = getBodyTempFromSensor();
+    currentHeartRate = readHeartRateSensorData();
   }
 
   // 정규화된 값 계산 (비선형 함수 사용)
@@ -145,16 +146,17 @@ void initializeTemperatureSensor() {
     Serial.println("체온 센서 초기화 실패.");
   }
 }
-
-void readHeartRateSensorData() {
+float readHeartRateSensorData() {
   // 센서로부터 심박수 읽기
   if (pulseSensor.sawNewSample()) {
-    currentHeartRate = pulseSensor.getBeatsPerMinute();
+    float beatsPerMinute = pulseSensor.getBeatsPerMinute();
     if (pulseSensor.sawStartOfBeat()) {
       Serial.print("심박수: ");
-      Serial.println(currentHeartRate);
+      Serial.println(beatsPerMinute);
     }
+    return beatsPerMinute; // 심박수 반환
   }
+  return currentHeartRate; // 새 샘플이 없을 경우 이전 값 유지
 }
 
 float getBodyTempFromSensor() {
