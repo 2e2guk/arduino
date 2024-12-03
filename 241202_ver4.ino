@@ -1,6 +1,3 @@
-// 상태 플래그 추가
-bool guardianNotified = false; // 보호자에게 알림이 전송되었는지 여부
-
 void loop() {
   unsigned long currentMillis = millis(); // 현재 시간 가져오기
 
