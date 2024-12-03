@@ -193,7 +193,7 @@ void alertGuardian() {
 
 void alert119() {
   String message = "ALERT_119\n";
-  message += "119 긴급 출동 바랍니다!\n"
+  message += "119 긴급 출동 바랍니다!\n";
   message += "심박수:" + String(currentHeartRate) + " BPM\n";
   message += "체온:" + String(currentBodyTemp) + " °C\n";
   message += "환자 위치: (위도),(경도)\n";
