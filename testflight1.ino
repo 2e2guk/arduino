@@ -77,7 +77,7 @@ void loop() {
   float bodyTempNormalized = sigmoid(normalizeBodyTemperature(currentBodyTemp, low_danger_temp_low, low_danger_temp_high, high_danger_temp_low, high_danger_temp_high));
 
   // 가중치를 사용하여 알림 값 계산
-  // 체온 0.7 심박수 0.3 정도의 가중치를 가져감 
+  // 체온 0.7 심박수 0.3 정도의 가중치를 가져감  -> 조정가능
   // 1. 심박수 센서의 오류가 많음. 2.심박수보다 체온이 더 사용자의 건간 상태를 나타내는데에 적합하다 판단.
   float alertval = 0.3 * heartRateNormalized + 0.7 * bodyTempNormalized;
 
